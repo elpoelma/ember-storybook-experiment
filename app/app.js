@@ -19,3 +19,15 @@ export default class App extends Application {
 }
 
 loadInitializers(App, config.modulePrefix, compatModules);
+
+export function createApp(options = {}) {
+  const app = App.create({ ...options, autoboot: false });
+
+  return app.buildInstance();
+}
+
+export async function start(instance) {
+  await instance.boot();
+
+  instance.startRouting();
+}

@@ -1,12 +1,17 @@
 {
   "extends": "@ember/app-tsconfig",
-  "include": ["app", "tests", "types"],
   "compilerOptions": {
     "allowJs": true,
     "paths": {
-      "my-app/tests/*": ["./tests/*"],
-      "my-app/*": ["./app/*"],
-      "*": ["./types/*"]
+      "my-app/tests/*": [
+        "./tests/*"
+      ],
+      "my-app/*": [
+        "./app/*"
+      ],
+      "*": [
+        "./types/*"
+      ]
     },
     "types": [
       "ember-source/types",
@@ -14,5 +19,11 @@
       "vite/client",
       "@glint/ember-tsc/types"
     ]
-  }
+  },
+  "include": [
+    "app/**/*",
+    "tests/**/*",
+    "types/**/*",
+    ".storybook/**/*"
+  ],
 }

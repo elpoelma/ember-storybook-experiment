@@ -16,3 +16,6 @@
 
 # broccoli-debug
 /DEBUG/
+
+/storybook-static/
+/debug-storybook.log

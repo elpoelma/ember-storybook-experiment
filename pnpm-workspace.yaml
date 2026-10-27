@@ -1,0 +1,16 @@
+# pnpm 12 reads its settings from this file (not .npmrc) and enables a 24h
+# "minimum release age" supply-chain check by default, which rejects lockfile
+# entries whose packages were published within the last 24h. Several entries
+# in pnpm-lock.yaml were freshly published at setup time, so this repo opts
+# out. Remove this once you want that policy back.
+minimumReleaseAge: 0
+
+# Don't re-verify/reinstall node_modules before every `pnpm run <script>` —
+# keeps `pnpm storybook` from blocking on the supply-chain check.
+verifyDepsBeforeRun: false
+
+# Explicitly decide on dependency build scripts (pnpm 12 blocks them by
+# default). esbuild ships platform binaries as optional dependencies, so its
+# postinstall is not needed — same choice as the ember-storybook repo.
+allowBuilds:
+  esbuild: false

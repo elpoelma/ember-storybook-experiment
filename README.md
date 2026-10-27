@@ -1,54 +1,62 @@
 # ember-storybook-experiment
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+An Ember 7 application for experimenting with
+[Storybook 10](https://storybook.js.org) via the
+[`ember-storybook`](https://github.com/ember-integrations/ember-storybook)
+addon (modeled on that repo's `demo` app). Builds run through
+[Embroider](https://embroider.build) on [Vite](https://vite.dev).
 
 ## Prerequisites
 
-You will need the following things properly installed on your computer.
-
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/) (with npm)
-- [Google Chrome](https://google.com/chrome/)
+- [Node.js](https://nodejs.org/) >= 20.19.0
+- [pnpm](https://pnpm.io/) (if it is not on your PATH, prefix the commands
+  below with `corepack`, e.g. `corepack pnpm install`)
 
 ## Installation
 
 - `git clone <repository-url>` this repository
 - `cd ember-storybook-experiment`
-- `npm install`
+- `pnpm install`
 
 ## Running / Development
 
-- `npm run start`
-- Visit your app at [http://localhost:4200](http://localhost:4200).
-- Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+- `pnpm storybook` — start the Storybook dev server on
+  [http://localhost:6006](http://localhost:6006)
+- `pnpm build-storybook` — produce a static Storybook build (output in
+  `storybook-static/`)
+
+Stories are colocated with their components and matched by the glob
+`app/**/*.stories.g(j|t)s` — see `.storybook/main.ts`.
 
 ### Code Generators
 
-Make use of the many generators for code, try `npm exec ember help generate` for more details
-
-### Running Tests
-
-- `npm run test`
-
-### Linting
-
-- `npm run lint`
-- `npm run lint:fix`
+Make use of the many generators for code, try `pnpm exec ember help generate`
+for more details.
 
 ### Building
 
-- `npm exec vite build --mode development` (development)
-- `npm run build` (production)
+- `pnpm exec vite build --mode development` (development)
+- `pnpm exec vite build` (production)
 
-### Deploying
+### Tests
 
-Specify what it takes to deploy your app.
+There is currently no test setup in this experiment (the classic `tests/`
+tree was removed as part of the Embroider/Vite migration).
+
+### Linting
+
+- `pnpm lint` — run all linters
+- `pnpm lint:fix` — auto-fix everything
+- `pnpm lint:js` — ESLint (includes type-checked rules for `.ts`/`.gts`)
+- `pnpm lint:types` — Glint type check
+- `pnpm lint:format` — check formatting
+- `pnpm format` — apply Prettier formatting
+
 
 ## Further Reading / Useful Links
 
 - [ember.js](https://emberjs.com/)
 - [Vite](https://vite.dev)
-- Development Browser Extensions
-  - [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  - [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+- [Storybook](https://storybook.js.org)
+- [ember-storybook demo app](https://github.com/ember-integrations/ember-storybook/tree/main/demo)
