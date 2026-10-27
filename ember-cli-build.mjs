@@ -8,6 +8,7 @@ export default async function (defaults) {
   const { buildOnce } = await import('@embroider/vite');
 
   const app = new EmberApp(defaults, {
+    "ember-cli-babel": { enableTypeScriptTransform: true },
     // Add options here
   });
 
