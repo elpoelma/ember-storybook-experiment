@@ -36,8 +36,8 @@ for more details.
 
 ### Building
 
-- `pnpm exec vite build --mode development` (development)
-- `pnpm exec vite build` (production)
+The app only runs inside Storybook, so there is no standalone app build. Use
+`pnpm build-storybook` to produce a static Storybook build.
 
 ### Tests
 
@@ -52,7 +52,6 @@ tree was removed as part of the Embroider/Vite migration).
 - `pnpm lint:types` — Glint type check
 - `pnpm lint:format` — check formatting
 - `pnpm format` — apply Prettier formatting
-
 
 ## Further Reading / Useful Links
 

@@ -25,9 +25,3 @@ export function createApp(options = {}) {
 
   return app.buildInstance();
 }
-
-export async function start(instance) {
-  await instance.boot();
-
-  instance.startRouting();
-}
