@@ -31,10 +31,10 @@ corepack pnpm lint:types      # Glint type check (ember-tsc --noEmit)
 corepack pnpm format         # Prettier write
 ```
 
-There are currently **no** `start`, `test`, or `build` npm scripts — the
-equivalent direct commands are documented in `README.md` (e.g. `pnpm exec vite`
-for the dev server, `pnpm exec vite build` for builds). Valid checks before
-finishing work: `lint`, and `storybook` if it is expected to run.
+There are currently **no** `start`, `test`, or `build` npm scripts. Storybook is
+the only way the app runs; there is no standalone Vite dev/build entry point.
+Valid checks before finishing work: `lint`, and `storybook` /
+`build-storybook` if it is expected to run.
 
 ## Layout & Conventions
 
@@ -44,8 +44,7 @@ finishing work: `lint`, and `storybook` if it is expected to run.
   `../app/**/*.stories.g(j|t)s` from `.storybook/main.ts`
   (e.g. `app/components/button.stories.gts`).
 - `.storybook/preview.ts` imports `createApp` from `../app/app` and exposes it
-  via `parameters.ember.app`. `app/app.js` also exports a `start(instance)`
-  helper.
+  via `parameters.ember.app`.
 - `ember-cli-build.mjs` — EmberApp + `compatBuild(app, buildOnce)` with
   `@warp-drive/core` `setConfig` (`compatWith: '5.8'`).
 - `vite.config.mjs` — `@embroider/vite` plugins (`classicEmberSupport`,
@@ -71,19 +70,20 @@ finishing work: `lint`, and `storybook` if it is expected to run.
 
 ## Known Issues / Current State
 
-- **Storybook works.** It was fixed by restoring the classic Embroider build
-  pipeline files (`config/`, `app/router.js`, `app/deprecation-workflow.js`,
-  `app/config/environment.js`, `app/styles/app.css`, `public/`, and the
-  classic `index.html` with `{{content-for}}` hooks) that the WIP deletions
-  had removed. `classicEmberSupport()` in `vite.config.mjs` spawns
-  `ember build --watch`, which requires those files.
+- The app has no `index.html` or `public/` directory: Storybook supplies its
+  own HTML, so the classic `index.html` is not needed by the prebuild. Do not
+  add a standalone `vite` entry point without restoring an `index.html` —
+  `vite build` uses it as its entry module.
+
 - `.storybook/main.ts` injects the app-config `<meta>` tag via `previewHead`:
-  the preview iframe uses Storybook's HTML, not the app's `index.html`, so
-  `app/config/environment.js` (`@embroider/config-meta-loader`) would
-  otherwise fail with "config is not an object". Keep this hook.
+  the preview iframe uses Storybook's HTML, so `app/config/environment.js`
+  (`@embroider/config-meta-loader`) would otherwise fail with "config is not
+  an object". Keep this hook.
+
 - `app/app.js` merges the classic wiring (warp-drive install, resolver +
-  compat-modules, initializers, inspector) with the `createApp`/`start`
-  exports required by `.storybook/preview.ts`.
+  compat-modules, initializers, inspector) with the `createApp` export
+  required by `.storybook/preview.ts`.
+
 - **pnpm 12 quirks** (settings live in `pnpm-workspace.yaml`, not `.npmrc`):
   `minimumReleaseAge: 0` opts out of the default 24h supply-chain age check
   (it rejects freshly published lockfile entries),
@@ -91,12 +91,4 @@ finishing work: `lint`, and `storybook` if it is expected to run.
   script (a failed verification wiped `node_modules/.bin` once), and
   `allowBuilds: esbuild: false` acknowledges the blocked build scripts so
   `pnpm install` succeeds.
-- The classic→demo migration (Vite-first, no ember-cli: drop
-  `ember-cli-build.mjs` + `classicEmberSupport()`, adopt
-  `ember-strict-application-resolver` + `#app/*` imports) was **not** done;
-  the hybrid pipeline was restored instead. It remains a possible follow-up.
-- Still deleted from the original app (fine for Storybook/dev): `tests/`,
-  `testem.cjs`, `app/services/store.js`, `app/helpers/` + `app/controllers/`
-  placeholders. There is no test setup.
-- `types/` directory referenced by `tsconfig.json` does not exist yet.
 - Node >= 20.19.0 required.
