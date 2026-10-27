@@ -40,9 +40,13 @@ Valid checks before finishing work: `lint`, and `storybook` /
 
 - `app/` — application code. Components are colocated GTS/GJS files
   (e.g. `app/components/button.gts`).
-- Stories live **next to** components and are matched by the glob
-  `../app/**/*.stories.g(j|t)s` from `.storybook/main.ts`
-  (e.g. `app/components/button.stories.gts`).
+- Stories live under `app/stories/` and are matched by the glob
+  `../app/stories/**/*.stories.g(j|t)s` from `.storybook/main.ts`
+  (e.g. `app/stories/components/buttons/AuButton.stories.gts`).
+- Standalone docs pages are MDX files under `app/docs/`, matched by
+  `../app/docs/**/*.mdx` (e.g. `app/docs/Outline/Getting-started.mdx`).
+  Use `*.mdx`, **not** `*.stories.mdx` — CSF-in-MDX was removed in Storybook 8.
+  MDX files import blocks from `@storybook/addon-docs/blocks`.
 - `.storybook/preview.ts` imports `createApp` from `../app/app` and exposes it
   via `parameters.ember.app`.
 - `ember-cli-build.mjs` — EmberApp + `compatBuild(app, buildOnce)` with

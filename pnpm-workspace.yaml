@@ -12,5 +12,8 @@ verifyDepsBeforeRun: false
 # Explicitly decide on dependency build scripts (pnpm 12 blocks them by
 # default). esbuild ships platform binaries as optional dependencies, so its
 # postinstall is not needed — same choice as the ember-storybook repo.
+# @parcel/watcher (pulled in by Storybook's docs tooling) falls back to its
+# JavaScript implementation, which is fine for our use.
 allowBuilds:
+  "@parcel/watcher": false
   esbuild: false

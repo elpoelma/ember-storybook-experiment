@@ -1,0 +1,42 @@
+/* ==========================================================================
+   #DOCS
+   Helpers used by the documentation pages (MDX).
+   ========================================================================== */
+
+.au-d-component {
+  border: 2px solid var(--au-gray-100);
+  background-color: color-mix(in srgb, var(--au-gray-100) 50%, var(--au-white));
+  border-radius: var(--au-radius);
+}
+
+.au-d-component + .au-d-component {
+  margin-top: 1rem;
+}
+
+.au-d-component p {
+  margin-top: 0 !important;
+  margin-bottom: 0;
+}
+
+.au-d-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+  box-shadow: 0 0 3px rgb(0 0 0 / 10%);
+  text-align: center;
+}
+
+.au-d-swatch__name,
+.au-d-swatch__value {
+  margin-bottom: 0.3rem;
+  font-family: monospace;
+  font-size: var(--au-h6);
+  font-weight: var(--au-medium);
+}
+
+.au-d-swatch__contrast {
+  font-size: var(--au-base);
+  font-weight: var(--au-light);
+}

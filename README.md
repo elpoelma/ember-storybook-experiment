@@ -26,8 +26,9 @@ addon (modeled on that repo's `demo` app). Builds run through
 - `pnpm build-storybook` — produce a static Storybook build (output in
   `storybook-static/`)
 
-Stories are colocated with their components and matched by the glob
-`app/**/*.stories.g(j|t)s` — see `.storybook/main.ts`.
+Stories live under `app/stories/` and are matched by the glob
+`app/stories/**/*.stories.g(j|t)s`; standalone docs pages live under `app/docs/`
+and are `*.mdx` files (not `*.stories.mdx`) — see `.storybook/main.ts`.
 
 ### Code Generators
 
