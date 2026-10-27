@@ -16,7 +16,7 @@ const appConfig = loadAppConfig(
 );
 
 const config: StorybookConfig = {
-  stories: ['../app/**/*.stories.g(j|t)s'],
+  stories: ['../app/stories/**/*.stories.g(j|t)s'],
 
   framework: 'ember-storybook',
 

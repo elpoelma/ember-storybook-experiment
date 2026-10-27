@@ -26,6 +26,7 @@
     "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@appuniversum/ember-appuniversum": "^4.5.1",
     "@babel/core": "^7.29.7",
     "@babel/eslint-parser": "^7.29.7",
     "@babel/plugin-transform-runtime": "^7.29.7",
@@ -84,6 +85,7 @@
     "prettier-plugin-ember-template-tag": "^2.1.8",
     "qunit": "^2.26.0",
     "qunit-dom": "^3.6.0",
+    "sass": "^1.106.1",
     "storybook": "^10.6.4",
     "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0",
