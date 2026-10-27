@@ -17,8 +17,8 @@ const appConfig = loadAppConfig(
 
 const config: StorybookConfig = {
   stories: [
-    '../app/stories/**/*.stories.g(j|t)s',
-    '../app/docs/**/*.mdx',
+    '../app/**/*.stories.g(j|t)s',
+    '../app/**/*.mdx',
   ],
 
   addons: ['@storybook/addon-docs'],
