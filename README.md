@@ -11,7 +11,7 @@ addon (modeled on that repo's `demo` app). Builds run through
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) >= 20.19.0
 - [pnpm](https://pnpm.io/) (if it is not on your PATH, prefix the commands
-  below with `corepack`, e.g. `corepack pnpm install`)
+  below with `corepack`, e.g. `corepack pnpm install`; or run `corepack enable` which should install `pnpm` and add it to your path)
 
 ## Installation
 
@@ -28,22 +28,12 @@ addon (modeled on that repo's `demo` app). Builds run through
 
 Stories live under `app/stories/` and are matched by the glob
 `app/stories/**/*.stories.g(j|t)s`; standalone docs pages live under `app/docs/`
-and are `*.mdx` files (not `*.stories.mdx`) — see `.storybook/main.ts`.
-
-### Code Generators
-
-Make use of the many generators for code, try `pnpm exec ember help generate`
-for more details.
+and are `*.mdx` files — see `.storybook/main.ts`.
 
 ### Building
 
 The app only runs inside Storybook, so there is no standalone app build. Use
 `pnpm build-storybook` to produce a static Storybook build.
-
-### Tests
-
-There is currently no test setup in this experiment (the classic `tests/`
-tree was removed as part of the Embroider/Vite migration).
 
 ### Linting
 
